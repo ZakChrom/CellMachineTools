@@ -1,16 +1,16 @@
 {
-  "id": "dev.replugged.PluginTemplate",
-  "name": "Plugin Template",
-  "description": "A plugin template",
+  "id": "co.repl.calion.CellMachineTools",
+  "name": "Cell Machine Tools",
+  "description": "Just some Cell Machine tools ig",
   "author": {
-    "name": "replugged",
-    "discordID": "1000992611840049192",
-    "github": "replugged-org"
+    "name": "Calion",
+    "discordID": "576065759185338371",
+    "github": "ZakChrom"
   },
   "version": "1.0.0",
   "updater": {
     "type": "github",
-    "id": "replugged-org/plugin-template"
+    "id": "ZakChrom/CellMachineTools"
   },
   "license": "MIT",
   "type": "replugged-plugin",

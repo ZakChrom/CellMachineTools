@@ -1,26 +1,19 @@
-import { Injector, Logger, webpack } from "replugged";
+import { Injector, Logger, commands } from "replugged"
 
-const inject = new Injector();
-const logger = Logger.plugin("PluginTemplate");
+const inject = new Injector()
+const logger = Logger.plugin("CellMachineTools")
 
-export async function start(): Promise<void> {
-  const typingMod = await webpack.waitForModule<{
-    startTyping: (channelId: string) => void;
-  }>(webpack.filters.byProps("startTyping"));
-  const getChannelMod = await webpack.waitForModule<{
-    getChannel: (id: string) => {
-      name: string;
-    };
-  }>(webpack.filters.byProps("getChannel"));
-
-  if (typingMod && getChannelMod) {
-    inject.instead(typingMod, "startTyping", ([channel]) => {
-      const channelObj = getChannelMod.getChannel(channel);
-      logger.log(`Typing prevented! Channel: #${channelObj?.name ?? "unknown"} (${channel}).`);
-    });
-  }
+export async function start() {
+    logger.log('Started')
+	commands.registerCommand({
+		name: 'test',
+		description: 'testing',
+		usage: '{c}',
+		executer: logger.log
+	})
 }
 
-export function stop(): void {
-  inject.uninjectAll();
+export function stop() {
+    inject.uninjectAll()
+	commands.unregisterCommand('test')
 }
